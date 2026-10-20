@@ -27,14 +27,14 @@
   $("#aboutIntro").textContent = PROFILE.intro;
   $("#footName").textContent = `${PROFILE.name} · ${PROFILE.role}`;
   $("#year").textContent = new Date().getFullYear();
-  $("#updated").textContent = `최근 업데이트: ${PROFILE.updated}`;
+  if ($("#updated")) $("#updated").textContent = `최근 업데이트: ${PROFILE.updated}`;
 
   const stats = [
     ["Projects", PROJECTS.length],
     ["Skills", SKILLS.reduce((n, g) => n + g.items.length, 0)],
     ["Focus", "Linux · IDS/IPS"]
   ];
-  $("#heroStats").innerHTML = stats.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
+  if ($("#heroStats")) $("#heroStats").innerHTML = stats.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
 
   $("#skills-grid").innerHTML = SKILLS.map(
     (g) => `<div class="skill"><h3>${esc(g.group)}</h3><ul>${g.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`

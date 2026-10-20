@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>논문 — 송우진</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--bg:#070708;--text:#f2f2f2;--muted:#a0a0a8;--line:#26262b;--accent:#e0262f;--surface:#141417}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}
+main{width:min(760px,100% - 32px);margin:0 auto;padding:40px 0 80px}
+a{color:#ff6b72}
+.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;margin-bottom:24px}
+.top a{color:var(--muted);text-decoration:none}
+h1{font-size:clamp(24px,4vw,32px);line-height:1.4} h2{border-top:1px solid var(--line);padding-top:28px;margin-top:40px}
+table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 10px} th{background:var(--surface)}
+blockquote{margin:0;padding:8px 16px;border-left:3px solid var(--accent);background:var(--surface)}
+code{background:var(--surface);padding:1px 5px;border-radius:4px;font-size:.9em}
+img{max-width:100%;background:#fff;border-radius:8px;padding:8px}
+hr{border:0;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><a href="../index.html#works">← 송우진 사이트로</a><span><a href="mbti-repro-package.zip" download>재현 패키지 ZIP ↓</a></span></div>
+<article id="paper">불러오는 중…</article>
+</main>
+<script type="text/markdown" id="src"># 글만 보고 성격을 맞힐 수 있을까: AI의 MBTI 판정 일관성과 주제 민감성 분석
+
+**작성자:** 우진
+**작성일:** 2026-10-16
+**관심 분야:** 성격유형 검사(MBTI)와 인공지능의 텍스트 기반 판단
+
+---
+
+## 초록
+
+사람들은 종종 AI에게 자기 글을 주고 &quot;내 MBTI를 맞혀 달라&quot;고 한다. 이때 AI의 판정이 믿을 만한지 확인하기 위해, 본 연구는 두 가지를 측정했다. (1) **반복 일관성**: 동일한 글을 서로 격리된 15개의 독립 AI 세션에 각각 투입했을 때 판정이 유지되는가. (2) **주제 민감성**: 같은 사람이 쓴 서로 다른 주제의 글에서 판정이 달라지는가. 글 4개(본인 글 2개, 공개 인물 글 2개) × 15회 = 총 60개 판정을 수집했다. 결과, 동일 입력에 대한 세션 간 판정은 **100% 동일**하여 반복으로 인한 흔들림은 관찰되지 않았다. 그러나 같은 저자(본인)의 취미 글(ISFP)과 계획 글(ISTJ)은 **4개 지표 중 2개(T/F, J/P)가 뒤집혔다.** 즉 변동은 &quot;같은 질문의 반복&quot;이 아니라 &quot;입력 글의 주제·어조&quot;에서 발생했다. 이는 글 기반 MBTI 판정이 글쓴이의 안정적 성격이 아니라 **그 글 한 편의 특성**을 반영함을 시사한다. 단, 반복 변동 0%는 실험에 쓴 AI의 결정론적 특성에 영향을 받았을 수 있어 한계로 논한다.
+
+---
+
+## 1. 서론
+
+MBTI는 대중적으로 널리 쓰이지만, 심리측정학계에서는 신뢰도·타당도 논란이 꾸준히 제기돼 왔다. 최근에는 사람들이 생성형 AI에게 자기가 쓴 글을 주고 MBTI를 추정해 달라고 하는 사용 방식이 흔해졌다. 그런데 이런 판정이 **얼마나 일관적인지**는 거의 검증되지 않는다. 사용자는 보통 한 번 물어보고 그 답을 받아들인다.
+
+본 연구의 질문은 다음과 같다. **AI에게 같은 글을 주면 매번 같은 MBTI가 나올까? 같은 사람이라도 다른 글을 주면 결과가 달라질까?**
+
+### 이미 알려진 사실과 본 연구가 새로 주장하는 것
+
+- **이미 알려진 사실(선행 연구):** MBTI의 재검사 신뢰도와 타당도에 대한 비판(Pittenger, 1993; McCrae &amp; Costa, 1989), 사람들이 두루뭉술한 성격 묘사를 자기 것으로 받아들인다는 바넘 효과(Forer, 1949) 등은 기존 심리학 연구에 보고돼 있다.
+- **본 연구가 새로 보는 것:** &quot;사람의 검사&quot;가 아니라 **&quot;AI가 글을 보고 내리는 판정&quot;의 반복 일관성과 주제 민감성**을 직접 측정한다.
+
+### 가설
+
+&gt; **AI에게 같은 글을 주고 MBTI를 추정하게 하면 판정이 한 유형으로 일관되게 유지되지 않으며, 같은 사람이 쓴 다른 주제의 글에서는 판정이 더 크게 흔들린다.**
+
+- 원인(독립변수): ① 동일 입력의 반복, ② 글의 주제 변경
+- 결과(종속변수): AI가 내놓는 MBTI 4글자 유형 및 4개 지표(E/I, S/N, T/F, J/P)
+- **가설이 틀렸다면 나올 결과:** 반복해도, 주제를 바꿔도 항상 같은 유형이 나온다.
+
+---
+
+## 2. 방법
+
+### 2.1 자극물(판정 대상 글) 4개
+
+| 글 | 출처 | 성격 | 인지도 |
+|----|------|------|--------|
+| T1 | 본인 작성(취미: 운동·노래) | 일상·감정 | 낮음 |
+| T2 | 본인 작성(계획: 보안 IT 진로) | 목표·계획 | 낮음 |
+| T3 | 봉준호, 제92회 아카데미 감독상 수상소감(2020-02-09, 공개 발언) | 재치·겸손 | 높음 |
+| T4 | RM(BTS), UN &quot;Generation Unlimited&quot; 연설(2018-09-24, UNICEF 공식 전문) | 성찰적 | 높음 |
+
+- T1·T2는 같은 저자(본인)가 쓴 **서로 다른 주제**의 글로, 주제 민감성(실험2) 측정에 사용했다.
+- T3·T4는 자유롭게 인용 가능한 공개 발언으로, 출처가 검증된 텍스트를 썼다.
+- 원문 전체는 `stimuli/` 폴더에 보관.
+
+### 2.2 조건
+
+| 구분 | 내용 |
+|------|------|
+| 바꾼 조건 | (실험1) 세션 반복 / (실험2) 글의 주제 |
+| 고정한 조건 | 동일한 평가 프롬프트, 동일한 글, 동일 모델 |
+| 반복/표본 | 글 1개당 15개 독립 세션 = 글 4개 × 15 = **60 판정** |
+| 측정값 | MBTI 4글자 유형, 4개 지표(E/I, S/N, T/F, J/P) 각각의 선택 |
+| 모델 | Claude Sonnet (서로 격리된 독립 서브에이전트 세션) |
+| 날짜 | 2026-10-16 |
+
+### 2.3 절차
+
+1. 동일한 평가 프롬프트(전문은 `scripts/rater_prompt.txt`)에 글 4개를 함께 넣는다.
+2. 서로 이전 답을 볼 수 없는 **독립 세션 15개**에 각각 1회 투입한다.
+3. 각 세션이 글 4개에 대해 4글자 유형과 4지표를 출력한다.
+4. 모든 결과를 `data/raw_data.csv`(60행)에 기록한다.
+5. `scripts/analyze.py`로 집계한다(표준 라이브러리만 사용).
+
+### 2.4 짧은 확인(재현) 방법
+
+`scripts/` 폴더에서 `py analyze.py`(또는 `python analyze.py`)를 실행하면 원자료로부터 아래 결과표(`data/summary.csv`)가 그대로 재생성된다.
+
+---
+
+## 3. 결과
+
+### 3.1 반복/세션 간 일관성 (실험1)
+
+| 글 | n | 최빈유형 | 서로 다른 유형 수 | 축 일치율(E/I·S/N·T/F·J/P) |
+|----|---|:---:|:---:|:---:|
+| T1 본인·취미 | 15 | ISFP | 1 | 100% / 100% / 100% / 100% |
+| T2 본인·계획 | 15 | ISTJ | 1 | 100% / 100% / 100% / 100% |
+| T3 봉준호 | 15 | ENFP | 1 | 100% / 100% / 100% / 100% |
+| T4 RM | 15 | INFP | 1 | 100% / 100% / 100% / 100% |
+
+→ 동일한 글을 독립 세션에 반복 투입했을 때, 15회 모두 완전히 같은 유형이 나왔다. **반복으로 인한 흔들림은 0%였다.**
+
+### 3.2 주제 민감성 (실험2): 같은 저자, 다른 주제
+
+| 축 | T1(취미) | T2(계획) | 변화 |
+|----|:---:|:---:|:---:|
+| E/I | I | I | 동일 |
+| S/N | S | S | 동일 |
+| **T/F** | **F** | **T** | **뒤집힘** |
+| **J/P** | **P** | **J** | **뒤집힘** |
+| **유형** | **ISFP** | **ISTJ** | **2/4 축 변화** |
+
+→ 같은 사람(본인)이 쓴 글인데도, 취미를 쓴 글은 ISFP, 계획을 쓴 글은 ISTJ로 판정됐다. 감정·힐링 중심의 취미 글에서는 F·P가, 목표·절차 중심의 계획 글에서는 T·J가 나왔다.
+
+### 3.3 그림
+
+![그림 1](figure1.svg)
+
+ (A) 세션 간 일관성 100%, (B) T1↔T2 축 비교에서 T/F·J/P 뒤집힘.
+
+### 가설대로 나온 부분 / 다르게 나온 부분
+
+- **다르게 나온 부분:** 가설 전반부(&quot;반복하면 흔들린다&quot;)는 **지지되지 않았다.** 반복 판정은 완전히 일관적이었다.
+- **가설대로 나온 부분:** 가설 후반부(&quot;주제를 바꾸면 더 흔들린다&quot;)는 **지지되었다.** 같은 사람의 글도 주제가 바뀌자 유형이 변했다.
+
+---
+
+## 4. 논의
+
+### 4.1 데이터가 가설을 뒷받침하는가
+
+가설의 앞부분(반복하면 흔들린다)은 뒷받침되지 않았고, 뒷부분(주제를 바꾸면 더 흔들린다)은 뒷받침되었다. 동일 입력에서는 15개 세션의 판정이 모두 같았지만(3.1의 100% 일치), 같은 저자의 글이라도 주제가 바뀌자 유형이 ISFP에서 ISTJ로 변했다(3.2의 2개 축 변화). 즉 이 실험에서 판정의 변동은 질문을 반복한 데서가 아니라 입력 글이 달라진 데서 나왔다. 따라서 AI가 글로 내리는 MBTI 판정에는 글쓴이의 특성뿐 아니라 **그 글 한 편이 담은 주제와 어조**가 영향을 준다고 판단한다. 다만 같은 저자의 글 쌍이 하나뿐이고 실제 MBTI와 비교하지 않았으므로, 글쓴이의 성격이 안정적인지 여부까지는 이 데이터로 말할 수 없다.
+
+### 4.2 다르게 나온 이유로 검토한 가능성
+
+1. **주제-어휘 연동:** 취미 글에는 &quot;스트레스가 풀린다&quot;, &quot;힐링&quot; 등 감정 어휘가 많아 F·P로, 계획 글에는 &quot;자격증&quot;, &quot;전문적 지식&quot;, &quot;실무&quot; 등 목표 어휘가 많아 T·J로 끌렸을 가능성.
+2. **글 길이·구조 차이:** 두 글의 서술 구조 차이가 지표에 영향을 주었을 가능성.
+3. **AI의 결정론적 성향:** 반복 변동이 0%인 것은 AI가 &quot;확신&quot;해서가 아니라, 실험에 쓴 세션이 거의 결정론적으로 같은 출력을 내기 때문일 가능성(아래 한계).
+
+### 4.3 가설 수정 전/후 (C37)
+
+- **수정 전 가설:** &quot;반복하면 흔들리고, 주제를 바꾸면 더 흔들린다.&quot;
+- **데이터에 맞춘 수정 후 가설:** &quot;AI의 글 기반 MBTI 판정은 **같은 입력의 반복에는 안정적이지만, 입력 글의 주제가 바뀌면 (같은 사람이어도) 유형이 달라진다.** 즉 변동은 반복이 아니라 입력 내용에서 온다.&quot;
+
+### 4.4 한계 (이 연구로 말할 수 없는 것)
+
+1. **결정론적 디코딩:** 본 실험의 독립 세션은 거의 동일한 출력을 내는 경향이 있어, 일반 사용자가 겪는 실시간 챗봇의 회차별 변동(샘플링 온도&gt;0)을 과소추정했을 수 있다. &quot;반복 변동 0%&quot;를 &quot;AI는 늘 일관적&quot;으로 일반화하면 안 된다.
+2. **표본:** 글 4개, 1개 모델, 한국어 3개+영어 1개. 언어·모델·글 수가 제한적이다. T4(영어)와 나머지(한국어)의 언어 차이는 통제되지 않았다.
+3. **정답 부재:** 글쓴이의 &quot;실제 MBTI&quot;와 비교하지 않았으므로 정확도(맞혔는가)는 다루지 않는다. 본 연구는 일관성만 다룬다.
+4. **인지도 혼입:** 유명 인물(T3·T4)은 AI가 글이 아니라 인물 지식으로 판정했을 가능성을 배제하지 못한다.
+
+### 4.5 결론
+
+이 실험에서 AI에게 같은 글을 반복해 물었을 때는 판정이 흔들리지 않았지만, 같은 사람이 쓴 글이라도 주제가 달라지면 다른 유형으로 판정되었다. 그러므로 &quot;AI가 내 글로 알려준 MBTI&quot;는 내 성격을 확정한 결과가 아니라, 내가 그때 쓴 글의 주제와 말투가 반영된 결과로 받아들이는 편이 타당하다. 글 한 편으로 성격을 단정하는 것은 신중해야 한다. 다만 이 결론은 글 4개, 모델 1개, 반복 변동이 거의 없는 실험 조건(4.4)에서 얻은 것이므로, 다른 모델이나 일반 챗봇으로 그대로 일반화할 수 없다.
+
+---
+
+## 5. 참고문헌
+
+1. Forer, B. R. (1949). The fallacy of personal validation: A classroom demonstration of gullibility. *Journal of Abnormal and Social Psychology*, 44(1), 118–123. https://doi.org/10.1037/h0059240 — (연결) 사람들이 일반적 성격 묘사를 자기 것으로 믿는 바넘 효과. 본 연구의 &quot;성격 판정이 두루뭉술하게 수용되는 맥락&quot; 배경.
+2. McCrae, R. R., &amp; Costa, P. T. (1989). Reinterpreting the Myers-Briggs Type Indicator from the perspective of the five-factor model of personality. *Journal of Personality*, 57(1), 17–40. https://scholars.duke.edu/publication/1458465 — (연결) MBTI 지표의 심리측정적 한계. 본 연구의 지표(E/I 등) 해석 주의.
+3. Pittenger, D. J. (1993). The utility of the Myers-Briggs Type Indicator. *Review of Educational Research*, 63(4), 467–488. — (연결) MBTI의 신뢰도·타당도 비판. 본 연구의 &quot;MBTI 판정의 안정성 의심&quot; 동기.
+
+**목록에서 뺀 문헌(C15):** Pittenger, D. J. (1993). Measuring the MBTI… and coming up short. *Journal of Career Planning &amp; Placement*, 54(1), 48–52. — 같은 저자·같은 해의 같은 주장(MBTI 심리측정 기준 미달)이며 위 3번이 더 학술적 근거를 갖추고 있어 중복이라 뺐다.
+
+**출처 확인 방법(C20):** AI가 제시한 후보 문헌이므로 그대로 믿지 않고, 2026-10-19에 저자가 직접 세 논문을 검색해 제목·저자·연도·학술지·권호·쪽수가 참고문헌 표기와 일치하는지 확인했다. 세 항목 모두 일치하여 수정하거나 제외한 항목은 없다. AI도 별도로 웹 검색으로 같은 서지 정보를 대조했으며(Forer: DOI 표기, McCrae &amp; Costa: Duke 대학 연구자 DB 서지 항목, Pittenger: 여러 문헌의 참고문헌 목록), 본문의 &quot;연결&quot; 설명은 초록과 2차 설명에 근거한다.
+
+
+**실험으로 검증된 연구 포함 여부(C16):** Forer(1949)는 학생들에게 동일한 성격 묘사를 나눠 주고 정확도를 평가하게 한 교실 실험이며, McCrae &amp; Costa(1989)는 성인 468명의 자기·타인 평가 자료를 분석한 실증 연구이다.
+
+---
+
+## 부록 A. 재현 패키지 구성
+- `stimuli/` : 판정 대상 글 4개(T1~T4) + 출처
+- `scripts/rater_prompt.txt` : 실험에 쓴 평가 프롬프트 전문
+- `scripts/analyze.py` : 원자료 → 요약 재생성 스크립트
+- `data/raw_data.csv` : 원자료 60행
+- `data/summary.csv` : 집계 결과
+- `paper/figure1.svg` : 그림 1
+- `README.txt` : 재현 방법
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+var t=document.createElement('textarea');t.innerHTML=document.getElementById('src').innerHTML;
+document.getElementById('paper').innerHTML=marked.parse(t.value);
+</script>
+</body>
+</html>
