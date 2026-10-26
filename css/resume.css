@@ -1,0 +1,320 @@
+/* ==========================================================================
+   이력서 페이지 — style.css의 색·폰트·NAV를 그대로 쓰고 본문만 추가
+   ========================================================================== */
+.resume {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  padding: 64px 36px 80px;
+}
+
+/* 아직 채우지 않은 자리 (이력서_작성항목.txt 참고) */
+.todo {
+  display: inline-block;
+  padding: 0 8px;
+  border: 1px dashed rgba(255, 79, 90, .6);
+  border-radius: 4px;
+  background: var(--accent-soft);
+  color: #ff9aa0;
+  font-size: .9em;
+  font-weight: 400;
+}
+li.todo { display: list-item; margin-top: 6px; }
+
+/* ---------- 상단 ---------- */
+.r-head { padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.r-name {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, var(--sans);
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .06em;
+}
+.r-name span {
+  display: inline-block;
+  margin-left: 12px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  color: var(--muted);
+  vertical-align: middle;
+}
+.r-role { margin: 10px 0 0; font-size: 20px; font-weight: 600; }
+.r-role em { font-style: normal; color: var(--muted); font-weight: 400; }
+.r-motto { margin: 8px 0 0; font-size: 17px; color: #d6d2e4; }
+.r-motto b { color: var(--accent); }
+.r-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.r-contact li { display: flex; align-items: center; gap: 10px; }
+.r-contact li > span:first-child {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+.r-contact a:hover { color: var(--accent); }
+
+/* ---------- 섹션 (왼쪽 제목 | 오른쪽 내용) ---------- */
+.r-sec {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+.r-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+.r-title i {
+  display: block;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: .12em;
+}
+.r-body > :first-child { margin-top: 0; }
+.r-lead { margin: 0 0 12px; font-size: 18px; }
+.r-lead b { color: var(--accent); }
+.r-points { margin: 0; padding-left: 18px; color: #d6d2e4; font-size: 15px; }
+.r-points li + li { margin-top: 4px; }
+.r-points li::marker { color: var(--accent); }
+.r-points b { color: var(--text); }
+
+/* 날짜 공통 */
+.r-date {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.r-muted { color: var(--muted); }
+/* 타임라인 날짜 옆 구분 꼬리표 (교육 / 경력 / 병역 / 학력) */
+.r-kind {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--text);
+}
+/* 카드·섹션 안 작은 소제목 */
+.r-sub {
+  margin: 14px 0 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--accent);
+}
+.r-body > .r-sub:first-child { margin-top: 0; }
+.r-desc { margin: 0; font-size: 15px; color: #d6d2e4; }
+.r-desc b { color: var(--text); }
+
+/* ---------- 프로젝트 ---------- */
+.r-item {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: 10px;
+  background: var(--bg-2);
+  transition: border-color .25s;
+}
+.r-item + .r-item { margin-top: 16px; }
+.r-item:hover { border-color: var(--line-strong); border-left-color: var(--accent); }
+.r-item__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.r-item h3 { margin: 0; font-size: 18px; font-weight: 700; }
+.r-item h3 small { margin-left: 8px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.r-meta { margin: 4px 0 12px; font-size: 13px; color: var(--muted); }
+.r-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.r-tags li {
+  padding: 2px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- 기술 스택 ---------- */
+.r-skills { margin: 0; display: grid; gap: 10px; }
+.r-skills div { display: grid; grid-template-columns: 90px 1fr; gap: 16px; font-size: 15px; }
+.r-skills dt { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); padding-top: 3px; }
+.r-skills dd { margin: 0; }
+
+/* ---------- 교육 · 경력 타임라인 ---------- */
+.r-timeline { margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--line-strong); }
+.r-timeline li { position: relative; padding: 0 0 26px 24px; }
+.r-timeline li:last-child { padding-bottom: 0; }
+.r-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+.r-timeline h3 { margin: 2px 0 4px; font-size: 17px; font-weight: 700; }
+.r-timeline p { margin: 0; font-size: 14px; color: #d6d2e4; }
+
+/* ---------- 자격증 ---------- */
+.r-certs { margin: 0; padding: 0; list-style: none; }
+.r-certs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.r-certs li:first-child { padding-top: 0; }
+.r-certs + .r-sub { margin-top: 22px; }
+.r-certs small { margin-left: 6px; font-size: 12px; color: var(--muted); }
+.r-date--hot { color: var(--accent); }
+
+/* ---------- 강점 ---------- */
+.r-quote {
+  margin: 0 0 22px;
+  padding: 0 0 0 16px;
+  border-left: 2px solid var(--accent);
+  font-size: 19px;
+  font-weight: 600;
+}
+.r-quote cite {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.r-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.r-stats li {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-2);
+}
+.r-stats b {
+  display: block;
+  font-family: var(--sans);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+.r-stats b small { font-size: 15px; margin-left: 2px; }
+.r-stats span { display: block; margin-top: 8px; font-weight: 700; }
+.r-stats p { margin: 4px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.r-source { margin: 12px 0 0; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+/* ---------- 스크롤 등장 (js/resume.js) — JS가 꺼져 있으면 처음부터 다 보임 ---------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .8s ease, transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+/* 같은 줄의 카드는 살짝 시간차를 두고 */
+.js .r-stats li:nth-child(2) { transition-delay: .12s; }
+.js .r-stats li:nth-child(3) { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* 하단 바 링크 */
+.meta a:hover { color: var(--accent); }
+
+/* ---------- 이력서 페이지 가독성: 글자 전체 확대 ----------
+   (이 파일은 메인 기술경력서 카드 · 프로젝트 페이지도 같이 쓰므로 .resume 안에만 적용) */
+.resume { width: min(940px, 100%); font-size: 17px; }
+.resume .r-sec { grid-template-columns: 180px minmax(0, 1fr); }
+/* 머리 */
+.resume .eyebrow { font-size: 13px; }
+.resume .r-name span { font-size: 15px; }
+.resume .r-role { font-size: 23px; }
+.resume .r-motto { font-size: 19px; }
+.resume .r-contact { font-size: 16px; }
+.resume .r-contact li > span:first-child { font-size: 12px; }
+/* 섹션 제목 */
+.resume .r-title { font-size: 21px; }
+.resume .r-title i { font-size: 13px; }
+.resume .r-sub { font-size: 13px; }
+/* 날짜 · 꼬리표 */
+.resume .r-date { font-size: 14px; }
+.resume .r-kind { font-size: 12px; padding: 2px 8px; }
+/* 교육 · 경력 */
+.resume .r-timeline li { padding-bottom: 30px; }
+.resume .r-timeline li::before { top: 8px; }
+.resume .r-timeline h3 { font-size: 19px; margin: 4px 0 6px; }
+.resume .r-timeline p { font-size: 16px; line-height: 1.75; }
+/* 자격증 */
+.resume .r-certs li { font-size: 17px; padding: 14px 0; }
+.resume .r-certs small { font-size: 14px; }
+/* 강점 */
+.resume .r-quote { font-size: 23px; }
+.resume .r-quote cite { font-size: 13px; }
+.resume .r-stats b { font-size: 42px; }
+.resume .r-stats b small { font-size: 17px; }
+.resume .r-stats span { font-size: 18px; }
+.resume .r-stats p { font-size: 15px; }
+.resume .r-source { font-size: 12px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 760px) {
+  .r-certs li { flex-direction: column; gap: 2px; }   /* 자격증 이름 · 응시일 겹치지 않게 두 줄로 */
+  .r-certs small { display: block; margin: 2px 0 0; }
+  .r-contact { flex-direction: column; gap: 8px; }
+  .resume { padding: 40px 20px 64px; }
+  .r-sec, .resume .r-sec { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .r-stats { grid-template-columns: minmax(0, 1fr); }
+  .r-item { padding: 18px; }
+  .r-item__head { flex-direction: column; gap: 2px; }
+  .r-item h3 small { display: block; margin: 2px 0 0; }
+}
+
+/* 인쇄 / PDF 저장: 밝은 종이 색으로 */
+@media print {
+  body { background: #fff; color: #111; }
+  .frame { border: 0; margin: 0; }
+  .nav, .meta { display: none; }
+  .r-item, .r-stats li { background: #fff; border-color: #ddd; }
+  .r-points, .r-timeline p { color: #333; }
+  .r-points b, .r-name { color: #111; }
+  .todo { background: none; color: #c00; }
+  .js .reveal { opacity: 1; transform: none; }
+}

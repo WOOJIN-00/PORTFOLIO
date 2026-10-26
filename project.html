@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>프로젝트 | 송우진</title>
+  <meta name="description" content="보안 엔지니어 송우진의 프로젝트 상세">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/resume.css">
+  <link rel="stylesheet" href="css/project.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="frame">
+    <!-- NAV -->
+    <header class="nav">
+      <a class="logo" href="index.html" aria-label="송우진 홈">
+        <img class="logo__img" src="assets/logo.png" alt="">
+      </a>
+      <nav class="nav__links" aria-label="주요 메뉴">
+        <a href="index.html">Home</a>
+        <a href="index.html#skills">SKILLS</a>
+        <a class="is-active" href="index.html#projects" aria-current="page">PROJECTS</a>
+      </nav>
+      <!-- Contact: 투명 랜선 플러그가 스위치 포트에 꽂히는 버튼 (마우스 올리면 연결) -->
+      <a class="nav__cta plug" href="index.html#contact" aria-label="Contact — 연락하기">
+        <!-- 케이블 + 플러그: 하나의 그림으로 항상 같이 움직임 -->
+        <span class="plug__cord" aria-hidden="true">
+          <svg class="plug__head" viewBox="0 0 94 26">
+            <defs>
+              <!-- 케이블·부트: 사이트 배경과 어울리는 남색 (위쪽에 은은한 광택) -->
+              <linearGradient id="plugCable" gradientUnits="userSpaceOnUse" x1="0" y1="4.5" x2="0" y2="21.5"><stop offset="0" stop-color="#4a4f6e"/><stop offset=".45" stop-color="#2c3047"/><stop offset="1" stop-color="#1b1d2b"/></linearGradient>
+            </defs>
+            <!-- 케이블 → 부트: 하나의 모양, 곡선으로 부드럽게 넓어짐 -->
+            <path class="plug__boot" d="M4.5 8.5H37C42.5 8.5 43.5 4.5 49 4.5V21.5C43.5 21.5 42.5 17.5 37 17.5H4.5A4.5 4.5 0 0 1 4.5 8.5Z"/>
+            <!-- 투명 플라스틱 몸체 + 걸쇠 -->
+            <path class="plug__latch" d="M53 4.2C53 1.8 55 .8 58 .8H70C72 .8 72.6 2 72.6 4.2"/>
+            <rect class="plug__body" x="49" y="4" width="33" height="18" rx="1.6"/>
+            <!-- 전선 8가닥 (T568B: 흰주황 · 주황 · 흰초록 · 파랑 · 흰파랑 · 초록 · 흰갈색 · 갈색) -->
+            <g class="plug__wires">
+              <path d="M50 6.3H78" stroke="#f6c9a6"/><path d="M50 8.3H78" stroke="#f08a3c"/>
+              <path d="M50 10.3H78" stroke="#bfe6c8"/><path d="M50 12.3H78" stroke="#3b6fe0"/>
+              <path d="M50 14.3H78" stroke="#c4d3f5"/><path d="M50 16.3H78" stroke="#2fa75a"/>
+              <path d="M50 18.3H78" stroke="#dcc6b1"/><path d="M50 20.3H78" stroke="#8a5a36"/>
+            </g>
+            <!-- 금색 핀 -->
+            <g class="plug__pins"><rect x="79" y="5.6" width="2.4" height="1.1"/><rect x="79" y="7.6" width="2.4" height="1.1"/><rect x="79" y="9.6" width="2.4" height="1.1"/><rect x="79" y="11.6" width="2.4" height="1.1"/><rect x="79" y="13.6" width="2.4" height="1.1"/><rect x="79" y="15.6" width="2.4" height="1.1"/><rect x="79" y="17.6" width="2.4" height="1.1"/><rect x="79" y="19.6" width="2.4" height="1.1"/></g>
+            <!-- 투명 플라스틱 윗면 반사광 -->
+            <path class="plug__shine" d="M51 5.4H80"/>
+          </svg>
+        </span>
+        <span class="plug__jack">
+          <span class="plug__leds" aria-hidden="true"><i></i><i></i></span>
+          <span class="plug__label">Contact</span>
+        </span>
+      </a>
+    </header>
+
+    <!-- 내용은 js/projects-data.js → js/project.js 가 채움 -->
+    <main class="pj" id="project">
+      <noscript><p class="pj__empty">이 페이지는 자바스크립트가 필요합니다.</p></noscript>
+    </main>
+
+    <footer class="meta">
+      <span>송우진 · SECURITY ENGINEER</span>
+      <span>UPDATED 2026-10-20</span>
+    </footer>
+  </div>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/project.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/plug.js"></script>
+</body>
+</html>

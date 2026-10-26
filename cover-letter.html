@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>자기소개서 | 송우진</title>
+  <meta name="description" content="미용 가위를 잡던 손으로 서버와 로그를 다루기까지 — 송우진의 이야기와 32일의 기록">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/resume.css">
+  <link rel="stylesheet" href="css/story.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <!-- 자기소개서 — 첫 화면 "자기소개서" 버튼으로 들어옴. 본문은 기술경력서(메인 네 번째 화면)와 같은 내용 -->
+  <div class="frame">
+    <!-- NAV -->
+    <header class="nav">
+      <a class="logo" href="index.html" aria-label="송우진 홈">
+        <img class="logo__img" src="assets/logo.png" alt="">
+      </a>
+      <nav class="nav__links" aria-label="주요 메뉴">
+        <a href="index.html">Home</a>
+        <a href="index.html#skills">SKILLS</a>
+        <a href="index.html#projects">PROJECTS</a>
+      </nav>
+      <!-- Contact: 투명 랜선 플러그가 스위치 포트에 꽂히는 버튼 (마우스 올리면 연결) -->
+      <a class="nav__cta plug" href="index.html#contact" aria-label="Contact — 연락하기">
+        <!-- 케이블 + 플러그: 하나의 그림으로 항상 같이 움직임 -->
+        <span class="plug__cord" aria-hidden="true">
+          <svg class="plug__head" viewBox="0 0 94 26">
+            <defs>
+              <!-- 케이블·부트: 사이트 배경과 어울리는 남색 (위쪽에 은은한 광택) -->
+              <linearGradient id="plugCable" gradientUnits="userSpaceOnUse" x1="0" y1="4.5" x2="0" y2="21.5"><stop offset="0" stop-color="#4a4f6e"/><stop offset=".45" stop-color="#2c3047"/><stop offset="1" stop-color="#1b1d2b"/></linearGradient>
+            </defs>
+            <!-- 케이블 → 부트: 하나의 모양, 곡선으로 부드럽게 넓어짐 -->
+            <path class="plug__boot" d="M4.5 8.5H37C42.5 8.5 43.5 4.5 49 4.5V21.5C43.5 21.5 42.5 17.5 37 17.5H4.5A4.5 4.5 0 0 1 4.5 8.5Z"/>
+            <!-- 투명 플라스틱 몸체 + 걸쇠 -->
+            <path class="plug__latch" d="M53 4.2C53 1.8 55 .8 58 .8H70C72 .8 72.6 2 72.6 4.2"/>
+            <rect class="plug__body" x="49" y="4" width="33" height="18" rx="1.6"/>
+            <!-- 전선 8가닥 (T568B: 흰주황 · 주황 · 흰초록 · 파랑 · 흰파랑 · 초록 · 흰갈색 · 갈색) -->
+            <g class="plug__wires">
+              <path d="M50 6.3H78" stroke="#f6c9a6"/><path d="M50 8.3H78" stroke="#f08a3c"/>
+              <path d="M50 10.3H78" stroke="#bfe6c8"/><path d="M50 12.3H78" stroke="#3b6fe0"/>
+              <path d="M50 14.3H78" stroke="#c4d3f5"/><path d="M50 16.3H78" stroke="#2fa75a"/>
+              <path d="M50 18.3H78" stroke="#dcc6b1"/><path d="M50 20.3H78" stroke="#8a5a36"/>
+            </g>
+            <!-- 금색 핀 -->
+            <g class="plug__pins"><rect x="79" y="5.6" width="2.4" height="1.1"/><rect x="79" y="7.6" width="2.4" height="1.1"/><rect x="79" y="9.6" width="2.4" height="1.1"/><rect x="79" y="11.6" width="2.4" height="1.1"/><rect x="79" y="13.6" width="2.4" height="1.1"/><rect x="79" y="15.6" width="2.4" height="1.1"/><rect x="79" y="17.6" width="2.4" height="1.1"/><rect x="79" y="19.6" width="2.4" height="1.1"/></g>
+            <!-- 투명 플라스틱 윗면 반사광 -->
+            <path class="plug__shine" d="M51 5.4H80"/>
+          </svg>
+        </span>
+        <span class="plug__jack">
+          <span class="plug__leds" aria-hidden="true"><i></i><i></i></span>
+          <span class="plug__label">Contact</span>
+        </span>
+      </a>
+    </header>
+
+    <main class="st">
+
+      <!-- 00 · 핵심 소개 — 인사담당자·현업자가 훑어봐도 핵심이 보이도록: 헤드라인 → 요약 → 핵심 3가지(미용 → 보안 근거) → 다짐 -->
+      <section class="cl-intro">
+        <h1 class="cl-headline">
+          <span>모발의 작은 손상 원인을 분석하던 집요함으로,</span>
+          <span><em>시스템의 숨은 취약점</em>을 찾아내겠습니다.</span>
+        </h1>
+
+        <p class="cl-lead reveal">
+          미용 현장에서 가장 중요하게 배운 것은 <b>‘사전 진단과 원칙 준수’</b>입니다.
+          다루는 대상은 모발에서 서버와 네트워크로 바뀌었지만,
+          <mark>대상의 상태를 정확히 분석해 잠재적 위험을 예방한다는 본질은 같습니다.</mark>
+        </p>
+
+        <ol class="cl-points">
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">01</span>
+              <h2 class="cl-point__key">사전 진단</h2>
+              <p class="cl-point__rule">고치기 전에, 먼저 정확히 본다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>미용 현장</dt><dd>볼륨매직 시술 때 같은 머리 안에서 <b>손상모와 건강모를 먼저 구별</b>하고, 부위마다 약제를 다르게 도포</dd></div>
+              <div><dt>보안 실습</dt><dd>취약 서버를 공격하기 전 <b>포트 스캔 · 인증서 · 공개 파일 분석</b>으로 대상의 상태부터 파악</dd></div>
+            </dl>
+          </li>
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">02</span>
+              <h2 class="cl-point__key">원칙 준수</h2>
+              <p class="cl-point__rule">정해진 기준을, 결과로 확인한다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>미용 현장</dt><dd>약제 비율을 조금이라도 어기면 <b>돌이킬 수 없는 손상</b>으로 이어지기에 정해진 기준을 지킴</dd></div>
+              <div><dt>보안 실습</dt><dd>방화벽 정책 5개의 <b>허용 · 차단을 하나씩 직접 검증</b>하고, 차단 규칙을 넣을 때마다 <b>막히면 안 되는 경로를 다시 시험</b></dd></div>
+            </dl>
+          </li>
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">03</span>
+              <h2 class="cl-point__key">소통</h2>
+              <p class="cl-point__rule">상대의 말을 먼저 듣는다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>미용 현장</dt><dd>고객의 의견을 먼저 듣고, <b>두상에 어울리면서도 원하시는 모습에 가장 가까운</b> 스타일로 드라이</dd></div>
+              <div><dt>앞으로</dt><dd>관찰한 사실을 상대가 이해할 수 있게 전하고, <b>유관 부서와 원활하게 협업</b></dd></div>
+            </dl>
+          </li>
+        </ol>
+
+        <p class="cl-close reveal">
+          꼼꼼한 관찰력과 상대의 말을 먼저 듣는 소통으로,<br>
+          <b>시스템의 취약점을 정확히 짚어내고 유관 부서와 원활하게 협업하는 보안 담당자</b>가 되겠습니다.
+        </p>
+      </section>
+
+      <!-- 01 · 지나온 길, 그리고 지금 — 도입 → 강점 3가지(핵심 · 실천) → 마무리 -->
+      <section class="st-story">
+        <p class="cl-lead reveal">
+          미용실에서 퇴근 후와 휴일을 반납하며 수백 번 연습한 끝에 얻은 확신,
+          <mark>‘안 되던 것도 시간을 쌓으면 결국 내 것이 된다’</mark>.
+          이 경험이 보안을 공부하는 지금 <b>저의 세 가지 핵심 강점</b>이 되었습니다.
+        </p>
+
+        <ol class="cl-points">
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">01 · Persistence</span>
+              <h3 class="cl-point__key">반복 숙달의 끈기</h3>
+              <p class="cl-point__rule">내 것이 될 때까지 파고든다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>핵심</dt><dd>안 되는 기술도 <b>내 것이 될 때까지 파고드는 집요함</b></dd></div>
+              <div><dt>실천</dt><dd>매일 아침 일찍 강의장에 출석하고, 주말에도 학원에 나와 <b>리눅스와 서버를 처음부터 끝까지 반복 구축</b>하며 인프라 구조를 몸으로 체득</dd></div>
+            </dl>
+          </li>
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">02 · Troubleshooting</span>
+              <h3 class="cl-point__key">침착한 원인 분석</h3>
+              <p class="cl-point__rule">감정보다 오류 메시지를 먼저 읽는다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>핵심</dt><dd>실습 중 예기치 못한 오류를 마주해도 <b>감정에 휘둘리지 않음</b></dd></div>
+              <div><dt>실천</dt><dd><b>오류 메시지를 정확히 읽고</b> → 전체 흐름상 <b>어느 부분에서 문제가 생겼는지 논리적으로 짚어</b> → 원인을 찾아 해결</dd></div>
+            </dl>
+          </li>
+          <li class="cl-point reveal">
+            <div class="cl-point__head">
+              <span class="cl-point__no">03 · Collaboration</span>
+              <h3 class="cl-point__key">지식 공유와 협업</h3>
+              <p class="cl-point__rule">나만 아는 기술에 머물지 않는다</p>
+            </div>
+            <dl class="cl-point__body">
+              <div><dt>핵심</dt><dd>ALEPH 과정 수업을 들으며 <b>꼼꼼히 기록해 둔 메모</b>를 적극적으로 활용</dd></div>
+              <div><dt>실천</dt><dd>실습 중 막혀 막막해하는 <b>동료에게 먼저 다가가 해결 방법을 알려주며</b> 함께 성장하는 팀 분위기를 만듦</dd></div>
+            </dl>
+          </li>
+        </ol>
+
+        <p class="cl-close reveal">
+          분야는 달라졌지만 기술을 완성하기 위해 밤늦게까지 연습하던 <b>그날의 태도는 그대로</b>입니다.<br>
+          반복으로 다진 탄탄한 기본기와 침착한 문제 해결력, 그리고 동료와 함께 걷는 협업 능력으로
+          <b>현장에 빠르게 안착하는 보안 엔지니어</b>가 되겠습니다.
+        </p>
+      </section>
+
+      <!-- 02 · 숫자로 보는 강점 (이력서에서 옮겨 옴) -->
+      <section class="st-sec">
+        <header class="st-sec__head reveal">
+          <h2>숫자로 보는 강점</h2>
+        </header>
+        <div class="cl-numbers reveal">
+          <blockquote class="r-quote">
+            “친화력이 좋고 성실하며 끈기가 있다.”
+            <cite>동료들이 해준 한 마디 · 2026-10-20</cite>
+          </blockquote>
+          <ul class="r-stats">
+            <li class="reveal"><b>46<small>일</small></b><span>성실</span><p>과정 전체 출석<br>지각 · 조퇴 · 결석 0</p></li>
+            <li class="reveal"><b>14<small>일</small></b><span>끈기</span><p>늦게까지 · 주말에도 남은 날<br>4일 연속 야간 과제 완수</p></li>
+            <li class="reveal"><b>134<small>개</small></b><span>친화력</span><p>동료와 서로의 장점을<br>말해 준 기록</p></li>
+          </ul>
+          <p class="r-source">출처: 리추얼 기록 · 출석 기록</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="meta">
+      <span>송우진 · SECURITY ENGINEER</span>
+      <span>UPDATED 2026-10-20</span>
+    </footer>
+  </div>
+
+  <script src="js/reveal.js"></script>
+  <script src="js/plug.js"></script>
+</body>
+</html>
